@@ -1,2 +1,2 @@
 # Instagrim
-Instagrim clone made with flask library (Python)
+Instagram clone made with flask library (Python)
