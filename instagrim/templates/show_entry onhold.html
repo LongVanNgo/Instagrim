@@ -1,0 +1,7 @@
+
+{% extends "layout.html" %}
+{% block body %}
+    <img class="full" src="{{ url_for('instagrim.image_file', filename=entry.image) }}">
+    <p class="caption">{{ entry.username }} ({{ entry.created  }}): {{ entry.message }}</p>
+{% endblock %}
+

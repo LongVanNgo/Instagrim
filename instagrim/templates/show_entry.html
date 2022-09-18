@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+<img class="full" src="{{ url_for('instagrim.image_file', filename=entry.image) }}">
+<p class="caption">{{ entry.username }} ({{ entry.created }}): {{ entry.message }}</p>
+
+<h2>Comments</h2>
+<dd><textarea  class="commentsection" name="note" rows="5" cols="30">
+{% for comment in comments %}
+{{ comment.username }}: {{ comment.msg }}
+{% endfor %}
+</textarea></dd>
+
+
+
+
+
+<form action="{{ url_for('instagrim.show_entry', id=entry.id) }}" method="post">
+    
+        
+  <dd><textarea placeholder="Looking good!" class=comment name="message" rows="5" cols="40"></textarea>
+  </dd>
+
+  <dd><input class="button" type="submit" value="Post">
+  </dl>
+{% endblock %}
+

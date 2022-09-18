@@ -1,0 +1,33 @@
+<!doctype html>
+
+<title>Instagrim</title>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<header>
+    <div id="topbar">
+        <a id="logo" href="{{ url_for('instagrim.show_entries') }}"></a>
+        {% if not session.logged_in %}
+        <a class="metanav" href="{{ url_for('instagrim.login') }}">Log in</a>
+        <a class="metanav" href="{{ url_for('instagrim.register') }}">Register user</a>
+        {% else %}
+        <a class="metanav" href="{{ url_for('instagrim.logout') }}">Log out ({{ session.username }})</a>
+        <a class="metanav" href="{{ url_for('instagrim.add_entry') }}">New post</a>
+        {% endif %}
+    </div>
+</header>
+
+<div class="page">
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+ 
+{% block body %}{% endblock %}
+
+<div style="clear: both;"></div>
+</div>

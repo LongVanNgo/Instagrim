@@ -1,0 +1,6 @@
+
+{% extends "layout.html" %}
+{% block body %}
+    <img class="full" src="{{ url_for('static', filename="images/{}".format(entry.imagefile)) }}">
+    <p class="caption">{{ entry.username }} ({{ entry.date }}): {{ entry.message }}</p>
+{% endblock %}
